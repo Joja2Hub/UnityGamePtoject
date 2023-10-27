@@ -376,6 +376,7 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
 "Assets/Scripts/ClientsScript.cs"
 "Assets/Scripts/CupScript.cs"
+"Assets/Scripts/DialogSystem.cs"
 "Assets/Scripts/DragObject.cs"
 "Assets/Scripts/GameManager.cs"
 "Assets/Scripts/LiquidTestObject.cs"

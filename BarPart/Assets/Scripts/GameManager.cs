@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public ClientsScript clientSript;
-    public GameObject client;
+    public GameObject []clients;
+    public int currentClientIndex = 0;
+    public GameObject spawnPos;
 
     public float enjoyStats;
     public float patience;
@@ -18,6 +21,13 @@ public class GameManager : MonoBehaviour
     public Slider PatienceSlide;
     public Button ServeButton;
 
+    private CupScript cupScript;
+
+    public GameObject dialoger;
+    private DialogSystem dialogSystem;
+    [SerializeField] int[] dialogIndexArray;
+    [SerializeField] int indexTrigger = 1;
+
 
     float cirlcDif = 0;
     private void OnTriggerEnter2D(Collider2D collision)
@@ -25,12 +35,16 @@ public class GameManager : MonoBehaviour
         Destroy(collision.gameObject);
     }
 
+    private void Awake()
+    {
+        cupScript = FindObjectOfType<CupScript>();
+        dialogSystem = FindObjectOfType<DialogSystem>();
+    }
     private void Start()
     {
         enjoyStats = 0;
         patience = 0;
         discontent = 0;
-        ClientCum();
     }
 
     private void Update()
@@ -43,15 +57,24 @@ public class GameManager : MonoBehaviour
             ClientGone();
     }
 
-    void ClientCum()
+    void SpawnClient()
     {
+        Instantiate(clients[currentClientIndex], spawnPos.transform.position, Quaternion.identity);
+    }
+
+    public void ClientCum()
+    {
+        SpawnClient();
+        cupScript.cupScriptInit();
         enjoyStats = 0;
         patience = 0;
         discontent = 0;
-        client = GameObject.FindGameObjectWithTag("Client");
-        clientSript = client.GetComponent<ClientsScript>();
+        clientSript = clients[currentClientIndex].GetComponent<ClientsScript>();
         clientSript.WakeUp();
         ServeButton.gameObject.SetActive(true);
+        //Dialog
+        dialogSystem.nextDialog(dialogIndexArray[indexTrigger]);
+        dialoger.SetActive(true);
         ClienReady();
     }
 
@@ -65,6 +88,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("ClientGone");
         ServeButton.interactable = false;
         clientSript.ClientGoneAnim();
+        currentClientIndex++;
     }
 
     public void Serve()

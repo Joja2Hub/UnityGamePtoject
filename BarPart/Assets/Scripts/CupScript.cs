@@ -9,9 +9,15 @@ public class CupScript : MonoBehaviour
 
     private void Start()
     {
+       
+    }
+
+    public void cupScriptInit()
+    {
         client = GameObject.FindGameObjectWithTag("Client");
         clientSript = client.GetComponent<ClientsScript>();
     }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.name == "LiquidParticle_air(Clone)")
