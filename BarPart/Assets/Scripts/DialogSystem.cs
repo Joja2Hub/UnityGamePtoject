@@ -53,18 +53,18 @@ public class DialogSystem : MonoBehaviour
         lines[0][11] = "...";
 
         //Первый диалог
-        lines[1][0] = "Привет.";
-        lines[1][1] = "1";
-        lines[1][2] = "12";
-        lines[1][3] = "132";
-        lines[1][4] = "Это что, тот бар на углу123";
-        lines[1][5] = "Черт, всегда хотел в него зайти, но никак не находил времени312";
-        lines[1][6] = "...123";
-        lines[1][7] = "Стоп, я что бармен?123";
-        lines[1][8] = "Я же никогда даже не нюхал алкоголь";
-        lines[1][9] = "...";
-        lines[1][10] = "Черт кажется идет клиент, нужно вести себя естественно";
-        lines[1][11] = "...";
+        lines[1][0] = "Привет. Мне как обычно";
+        lines[1][1] = "...";
+        lines[1][2] = "Ну?";
+        lines[1][3] = "...";
+        lines[1][4] = "Чел ты....";
+        lines[1][5] = "PlaceHolder";
+        lines[1][6] = "PlaceHolder";
+        lines[1][7] = "PlaceHolder";
+        lines[1][8] = "PlaceHolder";
+        lines[1][9] = "PlaceHolder";
+        lines[1][10] = "PlaceHolder";
+        lines[1][11] = "PlaceHolder";
 
 
     }

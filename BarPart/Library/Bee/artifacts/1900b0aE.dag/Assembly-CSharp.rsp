@@ -377,6 +377,7 @@
 "Assets/Scripts/ClientsScript.cs"
 "Assets/Scripts/CupScript.cs"
 "Assets/Scripts/DialogSystem.cs"
+"Assets/Scripts/DishesChoiser.cs"
 "Assets/Scripts/DragObject.cs"
 "Assets/Scripts/GameManager.cs"
 "Assets/Scripts/LiquidTestObject.cs"

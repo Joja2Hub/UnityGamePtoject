@@ -37,8 +37,14 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        cupScript = FindObjectOfType<CupScript>();
+       
         dialogSystem = FindObjectOfType<DialogSystem>();
+    }
+
+
+    public void CupScriptInit()
+    {
+        cupScript = FindObjectOfType<CupScript>();
     }
     private void Start()
     {

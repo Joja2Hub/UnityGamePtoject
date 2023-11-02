@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 91434ccdfc603a442aa5ef9efe261bf9
+guid: 5711423d90edf4942bc84e724910c0ff
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -130,8 +130,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fa09f6db5d8b64342bf8bf6f3c90298f
-      internalID: -52698401
+      spriteID: 0abe8bd53881ff844a38523c1ecf721b
+      internalID: 137750886
       vertices: []
       indices: 
       edges: []
@@ -151,8 +151,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 94a0f2d4e5071b84fa623065dc208b2e
-      internalID: 1347438477
+      spriteID: 12abfd626c32cf549bff86c75318f545
+      internalID: 237063659
       vertices: []
       indices: 
       edges: []
@@ -172,8 +172,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c4ca23360e7e7844b951abda12be52a9
-      internalID: 1581361930
+      spriteID: e335c2da609ff924287bed660ad5915d
+      internalID: 92027162
       vertices: []
       indices: 
       edges: []
@@ -193,8 +193,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 01c7cc6d893673548b334c002c87f568
-      internalID: -1434532590
+      spriteID: cdce5959c324bd84485502380622faa2
+      internalID: -1961773532
       vertices: []
       indices: 
       edges: []
@@ -214,29 +214,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 91b4278a4faed2e4ea440b2e82eda6de
-      internalID: 1271041183
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Bocals_28
-      rect:
-        serializedVersion: 2
-        x: 255
-        y: 88
-        width: 14
-        height: 9
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: db0e7eb6a3222a94983bbc842df6a87a
-      internalID: 1169667748
+      spriteID: 1c7dd066080e5b34294fb7afa5737073
+      internalID: -493750555
       vertices: []
       indices: 
       edges: []
@@ -252,52 +231,51 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Bocals_38: -2119299486
-      Bocals_3: -1434532590
-      Bocals_14: 2133963020
-      Bocals_15: 1139648779
-      Bocals_8: 1160564594
-      Bocals_22: -126341901
-      Bocals_39: -135863396
-      Bocals_0: -52698401
-      Bocals_9: -522733985
-      Bocals_40: -303319391
-      Bocals_27: -726090358
-      Bocals_32: 582450827
-      Bocals_34: -584184856
-      Bocals_10: -962613472
-      Bocals_31: -498664142
-      Bocals_26: -1771037426
-      Bocals_23: 586355623
-      Bocals_29: 319311109
-      Bocals_13: -1030807914
-      Bocals_21: 1467388800
-      Bocals_20: -1524890859
-      Bocals_35: -1936235530
-      Bocals_37: 1622068040
-      Bocals_12: -284808947
-      Bocals_11: 39176747
-      Bocals_41: -1214641656
-      Bocals_45: 873931105
-      Bocals_28: 1169667748
-      Bocals_36: -2055680094
-      Bocals_7: 1237838255
-      Bocals_25: -713740985
-      Bocals_42: 1746514070
-      Bocals_24: -977942073
-      Bocals_33: 1889729344
-      Bocals_16: -1019479174
-      Bocals_44: 2059625055
-      Bocals_17: 2054049114
-      Bocals_18: -543791267
-      Bocals_43: -392675847
-      Bocals_2: 1581361930
-      Bocals_1: 1347438477
-      Bocals_30: 1220872353
-      Bocals_6: 478022504
-      Bocals_19: 936824802
-      Bocals_5: -1900382745
-      Bocals_4: 1271041183
+      Bocals_38: 1431789944
+      Bocals_3: -1961773532
+      Bocals_14: -1841756520
+      Bocals_15: -1221333935
+      Bocals_8: 1202845724
+      Bocals_22: 272986486
+      Bocals_39: -272065373
+      Bocals_0: 137750886
+      Bocals_9: -1171866491
+      Bocals_40: 1605650571
+      Bocals_27: 752327032
+      Bocals_32: 669735302
+      Bocals_34: -1487152015
+      Bocals_10: 1850513712
+      Bocals_31: 2014003256
+      Bocals_26: -1549793928
+      Bocals_29: 106330762
+      Bocals_23: 2009312515
+      Bocals_13: -1473821408
+      Bocals_21: 313100578
+      Bocals_20: -1990697035
+      Bocals_35: -331363208
+      Bocals_37: -1003854444
+      Bocals_12: -388521086
+      Bocals_11: -1552476999
+      Bocals_41: 539792109
+      Bocals_28: -1070471112
+      Bocals_36: 1928796963
+      Bocals_7: 312126629
+      Bocals_25: 1265719876
+      Bocals_42: -624727444
+      Bocals_24: -1637561668
+      Bocals_33: -133226813
+      Bocals_16: -431012060
+      Bocals_44: 1929498704
+      Bocals_17: 738210960
+      Bocals_18: 1549491131
+      Bocals_43: -215668967
+      Bocals_2: 92027162
+      Bocals_1: 237063659
+      Bocals_30: 799359550
+      Bocals_6: -1190614278
+      Bocals_19: -1496153026
+      Bocals_5: 982069911
+      Bocals_4: -493750555
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
