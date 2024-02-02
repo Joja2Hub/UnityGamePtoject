@@ -19,7 +19,5 @@ public class DishesChoiser : MonoBehaviour
     private void OnMouseDown()
     {
         Instantiate(Cup, spawnPos.transform);
-        cupScript.cupScriptInit();
-        Debug.Log("Loa");
     }
 }

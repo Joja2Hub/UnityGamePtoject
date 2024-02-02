@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     public Slider PatienceSlide;
     public Button ServeButton;
 
-    private CupScript cupScript;
+    public CupScript cupScript;
 
     public GameObject dialoger;
     private DialogSystem dialogSystem;
@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviour
         enjoyStats = 0;
         patience = 0;
         discontent = 0;
+        ClientCum();
     }
 
     private void Update()
@@ -71,7 +72,6 @@ public class GameManager : MonoBehaviour
     public void ClientCum()
     {
         SpawnClient();
-        cupScript.cupScriptInit();
         enjoyStats = 0;
         patience = 0;
         discontent = 0;
@@ -79,7 +79,7 @@ public class GameManager : MonoBehaviour
         clientSript.WakeUp();
         ServeButton.gameObject.SetActive(true);
         //Dialog
-        dialogSystem.nextDialog(dialogIndexArray[indexTrigger]);
+        //dialogSystem.nextDialog(dialogIndexArray[indexTrigger]);
         dialoger.SetActive(true);
         ClienReady();
     }
