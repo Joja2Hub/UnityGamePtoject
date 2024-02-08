@@ -13,28 +13,44 @@ public class DragObject : MonoBehaviour
     public Transform dropPoint;
     float cooldown = 0;
     public float zRotation;
+    private Quaternion startZ;
+    private Vector3 startPos;
+    Rigidbody2D rb;
 
+    private void Start()
+    {
+        this.startPos = transform.position;
+        startZ = transform.rotation;
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    [SerializeField]
     private void OnMouseDown()
     {
         dragOffset = this.transform.position - GetMousePosition();
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        //Rigidbody2D rb = GetComponent<Rigidbody2D>();
     }
     private void OnMouseDrag()
     {
-        gameObject.transform.GetComponent<Rigidbody2D>().freezeRotation = true;
-        gameObject.transform.GetComponent<Rigidbody2D>().freezeRotation = false;
-        gameObject.transform.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
+        rb.freezeRotation = true;
+        rb.freezeRotation = false;
+        rb.bodyType = RigidbodyType2D.Kinematic;
         this.transform.position = Vector3.MoveTowards(this.transform.position, GetMousePosition() + dragOffset, dragSpeed);
         if (Input.GetKey(KeyCode.Q))
             rotation = Vector3.forward;
         else if (Input.GetKey(KeyCode.E))
             rotation = Vector3.back;
         else rotation = Vector3.zero;
-
-        
     }
 
-    
+    private void OnMouseUp()
+    {
+        rotation = Vector3.zero;
+        this.transform.rotation = startZ;
+        this.transform.position = startPos;
+        rb.freezeRotation = true;
+    }
+
 
     private void Update()
     {

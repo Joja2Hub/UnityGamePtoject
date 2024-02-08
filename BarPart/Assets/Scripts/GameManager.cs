@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public Animator animator;
     public ClientsScript clientSript;
     public GameObject []clients;
     public int currentClientIndex = 0;
@@ -23,8 +24,8 @@ public class GameManager : MonoBehaviour
 
     public CupScript cupScript;
 
+    public DialogSystem dialogue;
     public GameObject dialoger;
-    private DialogSystem dialogSystem;
     [SerializeField] int[] dialogIndexArray;
     [SerializeField] int indexTrigger = 1;
 
@@ -37,8 +38,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-       
-        dialogSystem = FindObjectOfType<DialogSystem>();
+
     }
 
 
@@ -51,7 +51,6 @@ public class GameManager : MonoBehaviour
         enjoyStats = 0;
         patience = 0;
         discontent = 0;
-        ClientCum();
     }
 
     private void Update()
@@ -76,7 +75,6 @@ public class GameManager : MonoBehaviour
         patience = 0;
         discontent = 0;
         clientSript = clients[currentClientIndex].GetComponent<ClientsScript>();
-        clientSript.WakeUp();
         ServeButton.gameObject.SetActive(true);
         //Dialog
         //dialogSystem.nextDialog(dialogIndexArray[indexTrigger]);
@@ -91,10 +89,17 @@ public class GameManager : MonoBehaviour
 
     void ClientGone()
     {
-        Debug.Log("ClientGone");
         ServeButton.interactable = false;
         clientSript.ClientGoneAnim();
+        Invoke("ClientUpdate", 2f);
+    }
+
+    void ClientUpdate()
+    {
+        clientSript.ClientDestroyer();
+        Debug.Log("ClientGoneWith 2f");
         currentClientIndex++;
+        ClientCum();
     }
 
     public void Serve()
@@ -137,5 +142,15 @@ public class GameManager : MonoBehaviour
             discontent += 0.1f;
         }
     }
+
+
+
+
+
+
+
+
+
+
 
 }

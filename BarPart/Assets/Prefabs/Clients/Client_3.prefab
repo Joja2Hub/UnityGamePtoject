@@ -539,8 +539,12 @@ MonoBehaviour:
   waterOrb: {fileID: 2965114730658266331}
   earthOrb: {fileID: 2965114731074772837}
   perfectPos: {fileID: 1187049284}
-  animator: {fileID: 0}
+  animator: {fileID: 1444700044}
   Perfect: 0
+  firstInteraction: 1
+  repeatStartPosition: 0
+  npcName: 
+  dialogueAsset: {fileID: 0}
 --- !u!95 &1444700044
 Animator:
   serializedVersion: 4

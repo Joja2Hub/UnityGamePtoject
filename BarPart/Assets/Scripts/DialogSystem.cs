@@ -1,4 +1,4 @@
-using System.Collections;
+п»їusing System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -14,7 +14,7 @@ public class DialogSystem : MonoBehaviour
     GameManager gameManager;
     int indexTrigger = 11;
 
-    
+
     void Start()
     {
         gameManager = GameManager.FindObjectOfType<GameManager>();
@@ -23,7 +23,7 @@ public class DialogSystem : MonoBehaviour
             lines[i] = new string[99];
         }
 
-            DialogInit();
+        DialogInit();
         text.text = string.Empty;
         StartDialog();
     }
@@ -38,26 +38,26 @@ public class DialogSystem : MonoBehaviour
     void DialogInit()
     {
 
-        //Втупление
+        //Г‚ГІГіГЇГ«ГҐГ­ГЁГҐ
         lines[0][0] = "...";
         lines[0][1] = "...";
-        lines[0][2] = "Бля";
-        lines[0][3] = "Где это я?";
-        lines[0][4] = "Это что, тот бар на углу";
-        lines[0][5] = "Черт, всегда хотел в него зайти, но никак не находил времени";
+        lines[0][2] = "Р“РґРµ СЏ?";
+        lines[0][3] = "123";
+        lines[0][4] = "Р­С‚Рѕ С‡С‚Рѕ, С‚РѕС‚ Р±Р°СЂ РЅР° СѓРіР»Сѓ?";
+        lines[0][5] = "Р’СЃРµРіРґР° С…РѕС‚РµР» С‚СѓС‚ РїРѕР±С‹РІС‚СЊ.";
         lines[0][6] = "...";
-        lines[0][7] = "Стоп, я что бармен?";
-        lines[0][8] = "Я же никогда даже не нюхал алкоголь";
+        lines[0][7] = "РЇ С‡С‚Рѕ Р·Р° Р±Р°СЂРЅРѕР№ СЃС‚РѕР№РєРѕР№?";
+        lines[0][8] = "РљР°Р¶РµС‚СЃСЏ СЏ Р±Р°СЂРјРµРЅ";
         lines[0][9] = "...";
-        lines[0][10] = "Черт кажется идет клиент, нужно вести себя естественно";
+        lines[0][10] = "Р›Р°РґРЅРѕ, РЅРµ Р±СѓРґСѓ РІС‹Р±РёРІР°С‚СЊСЃСЏ РёР· СЂРѕР»Рё. РљР°Р¶РµС‚СЃСЏ РёРґРµС‚ РєР»РёРµРЅС‚";
         lines[0][11] = "...";
 
-        //Первый диалог
-        lines[1][0] = "Привет. Мне как обычно";
+        //ГЏГҐГ°ГўГ»Г© Г¤ГЁГ Г«Г®ГЈ
+        lines[1][0] = "ГЏГ°ГЁГўГҐГІ. ГЊГ­ГҐ ГЄГ ГЄ Г®ГЎГ»Г·Г­Г®";
         lines[1][1] = "...";
-        lines[1][2] = "Ну?";
+        lines[1][2] = "ГЌГі?";
         lines[1][3] = "...";
-        lines[1][4] = "Чел ты....";
+        lines[1][4] = "Г—ГҐГ« ГІГ»....";
         lines[1][5] = "PlaceHolder";
         lines[1][6] = "PlaceHolder";
         lines[1][7] = "PlaceHolder";
@@ -69,12 +69,11 @@ public class DialogSystem : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Space)) 
+        if (Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.Space))
         {
-            if(text.text == lines[dialogID][index])
+            if (text.text == lines[dialogID][index])
             {
                 NextLine();
             }
@@ -94,10 +93,9 @@ public class DialogSystem : MonoBehaviour
     }
 
 
-    //Печать строк
     IEnumerator TypeLine()
     {
-        foreach(char c in lines[dialogID][index].ToCharArray()) 
+        foreach (char c in lines[dialogID][index].ToCharArray())
         {
             text.text += c;
             yield return new WaitForSeconds(TextSpeed);
@@ -107,13 +105,13 @@ public class DialogSystem : MonoBehaviour
 
     void NextLine()
     {
-        if(index < indexTrigger) 
+        if (index < indexTrigger)
         {
             index++;
             text.text = string.Empty;
             StartCoroutine(TypeLine());
         }
-        else if(index == indexTrigger)
+        else if (index == indexTrigger)
         {
             gameManager.ClientCum();
             gameObject.SetActive(false);

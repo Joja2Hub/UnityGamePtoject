@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager;
 using UnityEditor.U2D.Path.GUIFramework;
 using UnityEngine;
 
@@ -25,8 +26,10 @@ public class ClientsScript : MonoBehaviour
     public GameObject waterOrb;
     public GameObject earthOrb;
     public GameObject perfectPos;
+
     Vector2 cirlePos;
     GameManager gameManager;
+    GameObject client;
     public Animator animator;
 
     public bool Perfect = false;
@@ -35,25 +38,31 @@ public class ClientsScript : MonoBehaviour
         cirlePos.x = Random.Range(-1 * 4, 1 * 3);
         cirlePos.y = Random.Range((float)-0.1 * 4, (float)1.3 * 3);
         cirle.transform.position = cirlePos;
-        gameManager = GameManager.FindObjectOfType<GameManager>();
-        animator = GetComponent<Animator>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     public void TaskReload()
     {
         cirlePos.x = Random.Range(-1 * 7, 1 * 4);
         cirlePos.y = Random.Range((float)-0.1 * 7, (float)1.3 * 4);
-        cirle.transform.position = cirlePos;
+        //cirle.transform.position = cirlePos;
+        cirlePos = cirle.transform.position;
         air = airPrev = fire = firePrev = earth = earthPrev = water = waterPrev = 0;
     }
 
-    
+    private void Awake()
+    {
+        client = GameObject.FindGameObjectWithTag("Client");
+    }
+
+
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.K)) 
+        /*if(Input.GetKeyDown(KeyCode.K)) 
         {
             WakeUp();
         }
+        */
 
         //CirleChange
         if(air > airPrev)
@@ -99,4 +108,38 @@ public class ClientsScript : MonoBehaviour
     {
         animator.SetTrigger("ClientGone");
     }
+
+    public void ClientDestroyer()
+    {
+        Debug.Log("ClientGoneWith 2f");
+        Destroy(this);
+    }
+
+
+    //dialog system
+
+    [SerializeField] bool firstInteraction = true;
+    [SerializeField] int repeatStartPosition;
+    public string npcName;
+    public DialogSystem dialogueAsset;
+    [HideInInspector]
+    public int StartPosition
+    {
+        get
+        {
+            if (firstInteraction)
+            {
+                firstInteraction = false;
+                return 0;
+            }
+            else
+            {
+                return repeatStartPosition;
+            }
+        }
+    }
+
+
+
+
 }

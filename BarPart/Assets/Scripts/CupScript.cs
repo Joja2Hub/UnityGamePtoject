@@ -20,8 +20,9 @@ public class CupScript : MonoBehaviour
         //gameManager.CupScriptInit();
         client = GameObject.FindGameObjectWithTag("Client");
         clientSript = client.GetComponent<ClientsScript>();
-        
+        clientSript.WakeUp();
     }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {

@@ -19,5 +19,6 @@ public class DishesChoiser : MonoBehaviour
     private void OnMouseDown()
     {
         Instantiate(Cup, spawnPos.transform);
+
     }
 }
