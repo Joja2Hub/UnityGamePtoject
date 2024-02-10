@@ -320,7 +320,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 241654688}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.099, y: -0.161, z: 0}
+  m_LocalPosition: {x: 1.036, y: -0.17, z: 0}
   m_LocalScale: {x: 0.26158935, y: 0.23699997, z: 0.23699997}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -394,6 +394,7 @@ MonoBehaviour:
   dishID: 3
   Cup: {fileID: 5453891034170559158, guid: ff80f361d965c6e4e803cfcf98e2cb0a, type: 3}
   spawnPos: {fileID: 930188364}
+  cupExist: 0
 --- !u!61 &241654692
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -481,6 +482,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed269a910c41ee342b5ba2c14f1880e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   clientSript: {fileID: 0}
   clients:
   - {fileID: 2965114731025562807, guid: 4f19f09f778b96747b4e8f4d4a24cacc, type: 3}
@@ -498,10 +500,10 @@ MonoBehaviour:
   PatienceSlide: {fileID: 396223154}
   ServeButton: {fileID: 1798255484}
   cupScript: {fileID: 0}
+  dishesChoiser: {fileID: 0}
   dialogue: {fileID: 0}
   dialoger: {fileID: 1930447291}
-  dialogIndexArray: 0c0000000c0000000c000000
-  indexTrigger: 1
+  dialogIndexArray: 0c000000
 --- !u!4 &392171755
 Transform:
   m_ObjectHideFlags: 0
@@ -1103,7 +1105,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1005049932}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.042, y: -0.161, z: 0}
+  m_LocalPosition: {x: 0.899, y: -0.167, z: 0}
   m_LocalScale: {x: 0.26158935, y: 0.23699997, z: 0.23699997}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1177,6 +1179,7 @@ MonoBehaviour:
   dishID: 2
   Cup: {fileID: 5453891034170559158, guid: e6ee6d6661d8e2744b65cb55e6ec46bf, type: 3}
   spawnPos: {fileID: 930188364}
+  cupExist: 0
 --- !u!61 &1005049936
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1652,6 +1655,7 @@ MonoBehaviour:
   dishID: 0
   Cup: {fileID: 5453891034170559158, guid: 5ca126a75aa0f2048b897e1bcc659291, type: 3}
   spawnPos: {fileID: 930188364}
+  cupExist: 0
 --- !u!61 &1251711042
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2887,6 +2891,7 @@ MonoBehaviour:
   dishID: 1
   Cup: {fileID: 5453891034170559158, guid: a75eb7bbf65c7254f9c11fbdd3361f22, type: 3}
   spawnPos: {fileID: 930188364}
+  cupExist: 0
 --- !u!61 &2115335691
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3011,7 +3016,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1898968786925456175, guid: ed8aa0ca79d23ce4a951f36f39f41b8e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.48
+      value: 10.88
       objectReference: {fileID: 0}
     - target: {fileID: 1898968786925456175, guid: ed8aa0ca79d23ce4a951f36f39f41b8e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3072,7 +3077,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5050738680956337558, guid: bac8951d2cb0daf45aa86a8ebf9ba212, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8.75
+      value: 9.72
       objectReference: {fileID: 0}
     - target: {fileID: 5050738680956337558, guid: bac8951d2cb0daf45aa86a8ebf9ba212, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3137,7 +3142,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8415516698785436251, guid: f26c7d5163e70b74dab65b83680f3944, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.11
+      value: -0.03
       objectReference: {fileID: 0}
     - target: {fileID: 8415516698785436251, guid: f26c7d5163e70b74dab65b83680f3944, type: 3}
       propertyPath: m_LocalPosition.y

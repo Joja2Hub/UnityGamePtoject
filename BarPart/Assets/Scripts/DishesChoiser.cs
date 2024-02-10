@@ -16,9 +16,25 @@ public class DishesChoiser : MonoBehaviour
         cupScript = GetComponent<CupScript>();
     }
 
+
+    public bool cupExist = false;
     private void OnMouseDown()
     {
-        Instantiate(Cup, spawnPos.transform);
-
+        if (!cupExist)
+        {
+            Instantiate(Cup, spawnPos.transform);
+            cupExist = true;
+        }
     }
+
+    private void Update()
+    {
+        if(cupExist)
+        {
+            gameObject.SetActive(false);
+        }   
+        else
+            gameObject.SetActive(true);
+    }
+
 }

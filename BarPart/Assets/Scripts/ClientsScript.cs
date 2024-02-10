@@ -29,28 +29,37 @@ public class ClientsScript : MonoBehaviour
 
     Vector2 cirlePos;
     GameManager gameManager;
-    GameObject client;
+    public GameObject client;
     public Animator animator;
 
     public bool Perfect = false;
     void Start()
     {
-        cirlePos.x = Random.Range(-1 * 4, 1 * 3);
-        cirlePos.y = Random.Range((float)-0.1 * 4, (float)1.3 * 3);
         cirle.transform.position = cirlePos;
+        cirlePos.x = Random.Range(-1 * 7, 1 * 4);
+        cirlePos.y = Random.Range((float)-0.1 * 7, (float)1.3 * 4);
         gameManager = FindObjectOfType<GameManager>();
     }
 
     public void TaskReload()
     {
+        Debug.Log(cirle.transform.position);
+        Debug.Log(cirlePos);
         cirlePos.x = Random.Range(-1 * 7, 1 * 4);
         cirlePos.y = Random.Range((float)-0.1 * 7, (float)1.3 * 4);
-        //cirle.transform.position = cirlePos;
-        cirlePos = cirle.transform.position;
+        cirle.transform.position = cirlePos;
+        CirleTransform(cirlePos, 5);
+        Debug.Log("New "+ cirle.transform.position);
+        Debug.Log("New " + cirlePos);
         air = airPrev = fire = firePrev = earth = earthPrev = water = waterPrev = 0;
     }
 
     private void Awake()
+    {
+        clientInit();
+    }
+
+    void clientInit()
     {
         client = GameObject.FindGameObjectWithTag("Client");
     }
@@ -104,15 +113,19 @@ public class ClientsScript : MonoBehaviour
     }
 
 
-    public void ClientGoneAnim()
+    public void WakeDown()
     {
-        animator.SetTrigger("ClientGone");
+        fireOrb.SetActive(false);
+        airOrb.SetActive(false);
+        waterOrb.SetActive(false);
+        earthOrb.SetActive(false);
+        cirle.SetActive(false);
     }
 
     public void ClientDestroyer()
     {
         Debug.Log("ClientGoneWith 2f");
-        Destroy(this);
+        //Destroy(gameObject);
     }
 
 
@@ -138,8 +151,4 @@ public class ClientsScript : MonoBehaviour
             }
         }
     }
-
-
-
-
 }

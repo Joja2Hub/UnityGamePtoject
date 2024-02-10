@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public GameObject []clients;
     public int currentClientIndex = 0;
     public GameObject spawnPos;
+    GameObject currentClient;
+    GameObject currentCup;
 
     public float enjoyStats;
     public float patience;
@@ -23,11 +25,11 @@ public class GameManager : MonoBehaviour
     public Button ServeButton;
 
     public CupScript cupScript;
+    public DishesChoiser dishesChoiser;
 
     public DialogSystem dialogue;
     public GameObject dialoger;
     [SerializeField] int[] dialogIndexArray;
-    [SerializeField] int indexTrigger = 1;
 
 
     float cirlcDif = 0;
@@ -48,37 +50,48 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
+        statsInit();
+        
+    }
+
+    void statsInit()
+    {
         enjoyStats = 0;
         patience = 0;
         discontent = 0;
     }
 
+    bool clientGone = false;
     private void Update()
     {
         EnjoySlider.value = enjoyStats;
         DiscontentSlider.value = discontent;
         PatienceSlide.value = patience;
 
-        if (DiscontentSlider.value >= 1 || PatienceSlide.value >= 1)
+        if ((DiscontentSlider.value >= 1 || PatienceSlide.value >= 1) && !clientGone)
+        {
             ClientGone();
+            clientGone = true;
+        }
     }
 
     void SpawnClient()
     {
         Instantiate(clients[currentClientIndex], spawnPos.transform.position, Quaternion.identity);
+        currentClient = GameObject.FindGameObjectWithTag("Client");
+        animator = currentClient.GetComponent<Animator>();
+        
     }
 
     public void ClientCum()
     {
+        clientGone = false;
         SpawnClient();
         enjoyStats = 0;
         patience = 0;
         discontent = 0;
         clientSript = clients[currentClientIndex].GetComponent<ClientsScript>();
         ServeButton.gameObject.SetActive(true);
-        //Dialog
-        //dialogSystem.nextDialog(dialogIndexArray[indexTrigger]);
-        dialoger.SetActive(true);
         ClienReady();
     }
 
@@ -87,17 +100,23 @@ public class GameManager : MonoBehaviour
         ServeButton.interactable = true;
     }
 
+    
     void ClientGone()
     {
+        statsInit();
         ServeButton.interactable = false;
-        clientSript.ClientGoneAnim();
-        Invoke("ClientUpdate", 2f);
+        ClientGoneAnim();
+        Invoke("ClientUpdate", 3f);
+    }
+
+    public void ClientGoneAnim()
+    {
+        animator.SetTrigger("ClientGone");
     }
 
     void ClientUpdate()
     {
-        clientSript.ClientDestroyer();
-        Debug.Log("ClientGoneWith 2f");
+        Destroy(currentClient);
         currentClientIndex++;
         ClientCum();
     }
@@ -115,6 +134,7 @@ public class GameManager : MonoBehaviour
         clientSript.TaskReload();
         //Начать диалог
         Dialog();
+        Destroy(currentCup);
     }
 
     void Dialog()
@@ -142,15 +162,4 @@ public class GameManager : MonoBehaviour
             discontent += 0.1f;
         }
     }
-
-
-
-
-
-
-
-
-
-
-
 }

@@ -39,33 +39,21 @@ public class DialogSystem : MonoBehaviour
     {
 
         //Âòóïëåíèå
-        lines[0][0] = "...";
-        lines[0][1] = "...";
-        lines[0][2] = "Где я?";
-        lines[0][3] = "123";
-        lines[0][4] = "Это что, тот бар на углу?";
-        lines[0][5] = "Всегда хотел тут побывть.";
-        lines[0][6] = "...";
-        lines[0][7] = "Я что за барной стойкой?";
-        lines[0][8] = "Кажется я бармен";
+        lines[0][0] = "..2.";
+        lines[0][1] = "Here's a new day";
+        lines[0][2] = "Let see";
+        lines[0][3] = "..";
+        lines[0][4] = "As I remember, it is necessary to pour so much to the client to keep his \"Mood\" in the center";
+        lines[0][5] = "...";
+        lines[0][6] = "It seems the first guest is coming. He is very sensitive to the \"hot\"";
+        lines[0][7] = "He is also quite silent.";
+        lines[0][8] = "However, so do all the customers of this bar. It sounds like a ridiculous excuse for a lazy developer.";
         lines[0][9] = "...";
-        lines[0][10] = "Ладно, не буду выбиваться из роли. Кажется идет клиент";
+        lines[0][10] = "Let's get started";
         lines[0][11] = "...";
 
-        //Ïåðâûé äèàëîã
-        lines[1][0] = "Ïðèâåò. Ìíå êàê îáû÷íî";
-        lines[1][1] = "...";
-        lines[1][2] = "Íó?";
-        lines[1][3] = "...";
-        lines[1][4] = "×åë òû....";
-        lines[1][5] = "PlaceHolder";
-        lines[1][6] = "PlaceHolder";
-        lines[1][7] = "PlaceHolder";
-        lines[1][8] = "PlaceHolder";
-        lines[1][9] = "PlaceHolder";
-        lines[1][10] = "PlaceHolder";
-        lines[1][11] = "PlaceHolder";
-
+        lines[0][12] = "...";
+        lines[1][0] = "...";
 
     }
 
