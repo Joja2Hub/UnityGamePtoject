@@ -5,6 +5,7 @@ using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class GameManager : MonoBehaviour
 {
     public Animator animator;
@@ -123,7 +124,7 @@ public class GameManager : MonoBehaviour
 
     public void Serve()
     {
-        enjoyStatsCalculate();
+        
         Debug.Log(cirlcDif.ToString());
         GameObject[] luqid = GameObject.FindGameObjectsWithTag("Luqid");
         foreach (GameObject go in luqid)
@@ -133,18 +134,14 @@ public class GameManager : MonoBehaviour
         ServeButton.interactable = false;
         clientSript.TaskReload();
         //Начать диалог
-        Dialog();
-        Destroy(currentCup);
-    }
-
-    void Dialog()
-    {
         ClienReady();
+        Destroy(currentCup);
+        enjoyStatsCalculate();
     }
 
     void enjoyStatsCalculate()
     {
-        cirlcDif = Vector2.Distance(clientSript.cirle.transform.position, clientSript.perfectPos.transform.position);
+        cirlcDif = Mathf.Abs(Vector2.Distance(clientSript.cirle.transform.localPosition, clientSript.perfectPos.transform.localPosition));
         if (cirlcDif <= 0.15)
         {
             enjoyStats += 0.35f;

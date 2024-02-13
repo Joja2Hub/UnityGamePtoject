@@ -11,12 +11,14 @@ public class DialogSystem : MonoBehaviour
     [SerializeField] TextMeshProUGUI text;
     [SerializeField] string[][] lines = new string[99][];
     [SerializeField] float TextSpeed;
+    float defaultTextSpeed;
     GameManager gameManager;
     int indexTrigger = 11;
 
 
     void Start()
     {
+        defaultTextSpeed = TextSpeed;
         gameManager = GameManager.FindObjectOfType<GameManager>();
         for (int i = 0; i < 99; i++)
         {
@@ -43,9 +45,9 @@ public class DialogSystem : MonoBehaviour
         lines[0][1] = "Here's a new day";
         lines[0][2] = "Let see";
         lines[0][3] = "..";
-        lines[0][4] = "As I remember, it is necessary to pour so much to the client to keep his \"Mood\" in the center";
+        lines[0][4] = "As I remember, it is necessary to pour so much to the client to keep his <color=red>Mood</color> сlose enough to the top of his head";
         lines[0][5] = "...";
-        lines[0][6] = "It seems the first guest is coming. He is very sensitive to the \"hot\"";
+        lines[0][6] = "It seems the first guest is coming. He is very sensitive to the <color=orange>hot</color>";
         lines[0][7] = "He is also quite silent.";
         lines[0][8] = "However, so do all the customers of this bar. It sounds like a ridiculous excuse for a lazy developer.";
         lines[0][9] = "...";
@@ -86,6 +88,9 @@ public class DialogSystem : MonoBehaviour
         foreach (char c in lines[dialogID][index].ToCharArray())
         {
             text.text += c;
+            if (index == 4 || index == 6)
+                TextSpeed /= 2;
+            else TextSpeed = defaultTextSpeed;
             yield return new WaitForSeconds(TextSpeed);
         }
 
