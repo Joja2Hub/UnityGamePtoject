@@ -9,11 +9,12 @@ public class DishesChoiser : MonoBehaviour
     public GameObject Cup;
     public GameObject spawnPos;
     CupScript cupScript;
-
+    GameManager gameManager;
 
     private void Start()
     {
         cupScript = GetComponent<CupScript>();
+        gameManager = GetComponent<GameManager>();
     }
 
 
@@ -24,7 +25,20 @@ public class DishesChoiser : MonoBehaviour
         {
             Instantiate(Cup, spawnPos.transform);
             cupExist = true;
+            gameManager.dishesChoiser = this;
         }
+    }
+
+    public void cupInit()
+    {
+        Cup = GameObject.FindGameObjectWithTag("Cup");
+        cupScript = Cup.GetComponent<CupScript>();
+    }
+
+    public void destroerCurCup()
+    {
+        Destroy(Cup);
+        gameManager.dishesChoiser = null;
     }
 
     private void Update()

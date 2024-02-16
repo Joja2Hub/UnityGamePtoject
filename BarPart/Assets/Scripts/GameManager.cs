@@ -26,11 +26,13 @@ public class GameManager : MonoBehaviour
     public Button ServeButton;
 
     public CupScript cupScript;
+    GameObject cup;
     public DishesChoiser dishesChoiser;
 
     public DialogSystem dialogue;
     public GameObject dialoger;
     [SerializeField] int[] dialogIndexArray;
+    private int drinkCount;
 
 
     float cirlcDif = 0;
@@ -52,7 +54,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         statsInit();
-        
+        dishesChoiser = FindObjectOfType<DishesChoiser>();  
     }
 
     void statsInit()
@@ -69,7 +71,7 @@ public class GameManager : MonoBehaviour
         DiscontentSlider.value = discontent;
         PatienceSlide.value = patience;
 
-        if ((DiscontentSlider.value >= 1 || PatienceSlide.value >= 1) && !clientGone)
+        if ((DiscontentSlider.value >= 1 || PatienceSlide.value >= 1 || EnjoySlider.value >=1) && !clientGone)
         {
             ClientGone();
             clientGone = true;
@@ -81,7 +83,7 @@ public class GameManager : MonoBehaviour
         Instantiate(clients[currentClientIndex], spawnPos.transform.position, Quaternion.identity);
         currentClient = GameObject.FindGameObjectWithTag("Client");
         animator = currentClient.GetComponent<Animator>();
-        
+
     }
 
     public void ClientCum()
@@ -92,6 +94,7 @@ public class GameManager : MonoBehaviour
         patience = 0;
         discontent = 0;
         clientSript = clients[currentClientIndex].GetComponent<ClientsScript>();
+        
         ServeButton.gameObject.SetActive(true);
         ClienReady();
     }
@@ -107,8 +110,11 @@ public class GameManager : MonoBehaviour
         statsInit();
         ServeButton.interactable = false;
         ClientGoneAnim();
+
         Invoke("ClientUpdate", 3f);
     }
+
+
 
     public void ClientGoneAnim()
     {
@@ -124,13 +130,15 @@ public class GameManager : MonoBehaviour
 
     public void Serve()
     {
-        
         Debug.Log(cirlcDif.ToString());
         GameObject[] luqid = GameObject.FindGameObjectsWithTag("Luqid");
+        drinkCount = 0;
         foreach (GameObject go in luqid)
         {
+            drinkCount++;
             Destroy (go);
         }
+        Debug.Log(drinkCount.ToString());
         ServeButton.interactable = false;
         clientSript.TaskReload();
         //Начать диалог
@@ -142,21 +150,30 @@ public class GameManager : MonoBehaviour
     void enjoyStatsCalculate()
     {
         cirlcDif = Mathf.Abs(Vector2.Distance(clientSript.cirle.transform.localPosition, clientSript.perfectPos.transform.localPosition));
-        if (cirlcDif <= 0.15)
+        if (drinkCount >= 50)
         {
-            enjoyStats += 0.35f;
-            Debug.Log("Perfect");
+            if (cirlcDif <= 0.15)
+            {
+                enjoyStats += 0.35f;
+                Debug.Log("Perfect");
+            }
+            else if (cirlcDif <= 0.3)
+                enjoyStats += 0.25f;
+            else if (cirlcDif <= 0.5)
+                enjoyStats += 0.15f;
+            else if (cirlcDif <= 1)
+                enjoyStats += 0.15f;
+            else if (cirlcDif >= 1.5)
+            {
+                enjoyStats += 0.05f;
+                discontent += 0.1f;
+            }
         }
-        else if (cirlcDif <= 0.3)
-            enjoyStats += 0.25f;
-        else if (cirlcDif <= 0.5)
-            enjoyStats += 0.15f;
-        else if (cirlcDif <= 1)
-            enjoyStats += 0.15f;
-        else if (cirlcDif >= 1.5)
+        else
         {
-            enjoyStats += 0.05f;
-            discontent += 0.1f;
+            discontent += 0.3f;
+                
         }
+        drinkCount = 0;
     }
 }

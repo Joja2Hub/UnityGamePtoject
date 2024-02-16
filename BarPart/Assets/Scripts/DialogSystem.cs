@@ -41,7 +41,7 @@ public class DialogSystem : MonoBehaviour
     {
 
         //Âòóïëåíèå
-        lines[0][0] = "..2.";
+        lines[0][0] = "...";
         lines[0][1] = "Here's a new day";
         lines[0][2] = "Let see";
         lines[0][3] = "..";
@@ -51,8 +51,8 @@ public class DialogSystem : MonoBehaviour
         lines[0][7] = "He is also quite silent.";
         lines[0][8] = "However, so do all the customers of this bar. It sounds like a ridiculous excuse for a lazy developer.";
         lines[0][9] = "...";
-        lines[0][10] = "Let's get started";
-        lines[0][11] = "...";
+        lines[0][10] = "It also important not to pour too much";
+        lines[0][11] = "Let's get started";
 
         lines[0][12] = "...";
         lines[1][0] = "...";

@@ -7,14 +7,14 @@ using UnityEngine.SocialPlatforms;
 
 public class ClientsScript : MonoBehaviour
     {
-        public int fire = 0;
-        int firePrev = 0;
-        public int air = 0;
-        int airPrev = 0;
-        public int water = 0;
-        int waterPrev = 0;
-        public int earth = 0;
-        int earthPrev = 0;
+        public float fire = 0;
+    float firePrev = 0;
+        public float air = 0;
+    float airPrev = 0;
+        public float water = 0;
+    float waterPrev = 0;
+        public float earth = 0;
+    float earthPrev = 0;
         public float airCoeff;
         public float waterCoeff;
         public float earthCoeff;
@@ -28,7 +28,7 @@ public class ClientsScript : MonoBehaviour
         public GameObject earthOrb;
         public GameObject perfectPos;
 
-    Vector2 newPos;
+        Vector2 newPos;
         Vector2 cirlePos;
         GameManager gameManager;
         public GameObject client;
@@ -37,20 +37,22 @@ public class ClientsScript : MonoBehaviour
         public bool Perfect = false;
         void Start()
         {
-        cirlePos.x = Random.Range(-1.3f, 1.4f);
-        cirlePos.y = Random.Range(-0.21f, 1.4f);
-        CirleTransform(cirlePos, 200);
+        cirlePos.x = newPos.x = Random.Range(-1.3f, 1.4f);
+        cirlePos.y = newPos.y = Random.Range(-0.21f, 1.4f);
+        //CirleTransform(cirlePos, 200);
         cirle.transform.localPosition = cirlePos;
         gameManager = FindObjectOfType<GameManager>();
         }
 
         public void TaskReload()
         {
+            air = airPrev = fire = firePrev = earth = earthPrev = water = waterPrev = 0f;
             newPos.x = Random.Range(-1.3f, 1.4f);
             newPos.y = Random.Range(-0.21f, 1.4f);
-            CirleTransform(newPos, 2000);
-            air = airPrev = fire = firePrev = earth = earthPrev = water = waterPrev = 0;
-    }
+            //CirleTransform(newPos, 2000);
+            cirle.transform.localPosition = newPos;
+            
+        }
 
         private void Awake()
         {
@@ -63,10 +65,8 @@ public class ClientsScript : MonoBehaviour
         }
 
 
-        void Update()
-        {
-
-
+    void Update()
+    {
 
         //CirleChange
         if (air > airPrev)
@@ -89,14 +89,12 @@ public class ClientsScript : MonoBehaviour
             CirleTransform(earthOrb.transform.localPosition, earthCoeff);
             earthPrev = earth;
         }
-        else 
-           cirle.transform.localPosition = cirlePos;
-        }
+    }
 
 
         public void CirleTransform(Vector3 target, float movePower)
         {
-            cirle.transform.localPosition = Vector3.MoveTowards(cirle.transform.localPosition, target, movePower * Time.deltaTime);
+            cirle.transform.localPosition = Vector3.MoveTowards(cirle.transform.localPosition, target, movePower * Time.deltaTime);//Vector3.Lerp(cirle.transform.localPosition, target, movePower * Time.deltaTime);
             cirlePos = cirle.transform.localPosition;
         }
 
