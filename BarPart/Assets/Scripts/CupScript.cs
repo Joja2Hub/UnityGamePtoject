@@ -10,16 +10,18 @@ public class CupScript : MonoBehaviour
 
     private void Start()
     {
-        gameManager = GameManager.FindObjectOfType<GameManager>();
+        gameManager = FindObjectOfType<GameManager>();
         
     }
 
 
     public void Awake()
     {
+        gameManager = FindObjectOfType<GameManager>();
         client = GameObject.FindGameObjectWithTag("Client");
         clientSript = client.GetComponent<ClientsScript>();
         clientSript.WakeUp();
+        gameManager.curCupInit();
     }
 
 

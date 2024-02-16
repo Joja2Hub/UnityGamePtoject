@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DishesChoiser : MonoBehaviour
@@ -10,22 +11,32 @@ public class DishesChoiser : MonoBehaviour
     public GameObject spawnPos;
     CupScript cupScript;
     GameManager gameManager;
+    
 
     private void Start()
     {
+        
         cupScript = GetComponent<CupScript>();
         gameManager = GetComponent<GameManager>();
+        
     }
 
 
     public bool cupExist = false;
+
+   
+    
+    
     private void OnMouseDown()
     {
         if (!cupExist)
         {
             Instantiate(Cup, spawnPos.transform);
+            cupInit();
+            Vector3 newPosition = gameObject.transform.position;
+            newPosition.y = -10f;
+            gameObject.transform.position = newPosition;
             cupExist = true;
-            gameManager.dishesChoiser = this;
         }
     }
 
@@ -35,9 +46,8 @@ public class DishesChoiser : MonoBehaviour
         cupScript = Cup.GetComponent<CupScript>();
     }
 
-    public void destroerCurCup()
+    public void dishChoiserInitLos()
     {
-        Destroy(Cup);
         gameManager.dishesChoiser = null;
     }
 
@@ -45,7 +55,7 @@ public class DishesChoiser : MonoBehaviour
     {
         if(cupExist)
         {
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
         }   
         else
             gameObject.SetActive(true);

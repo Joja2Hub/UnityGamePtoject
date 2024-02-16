@@ -374,6 +374,7 @@
 -r:"Library/Bee/artifacts/1900b0aE.dag/Unity.VSCode.Editor.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEditor.UI.ref.dll"
 -r:"Library/Bee/artifacts/1900b0aE.dag/UnityEngine.UI.ref.dll"
+"Assets/Fonts/Script/scriptTexttest.cs"
 "Assets/Scripts/ClientsScript.cs"
 "Assets/Scripts/CupScript.cs"
 "Assets/Scripts/DialogSystem.cs"
@@ -381,6 +382,7 @@
 "Assets/Scripts/DragObject.cs"
 "Assets/Scripts/GameManager.cs"
 "Assets/Scripts/LiquidTestObject.cs"
+"Assets/Scripts/MainMenuScript.cs"
 "Assets/Scripts/PerfectCircleoPosition.cs"
 "Assets/Scripts/TableDestroyer.cs"
 -langversion:9.0

@@ -42,6 +42,7 @@ public class ClientsScript : MonoBehaviour
         //CirleTransform(cirlePos, 200);
         cirle.transform.localPosition = cirlePos;
         gameManager = FindObjectOfType<GameManager>();
+
         }
 
         public void TaskReload()
@@ -62,6 +63,7 @@ public class ClientsScript : MonoBehaviour
         void clientInit()
         {
             client = GameObject.FindGameObjectWithTag("Client");
+            //gameManager.currentClient = client;
         }
 
 

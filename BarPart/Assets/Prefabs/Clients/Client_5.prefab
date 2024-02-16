@@ -142,7 +142,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2965114729907076348}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.76, z: 0}
+  m_LocalPosition: {x: 0.45744, y: -0.034722134, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -538,8 +538,13 @@ MonoBehaviour:
   waterOrb: {fileID: 2965114730658266331}
   earthOrb: {fileID: 2965114731074772837}
   perfectPos: {fileID: 1187049284}
+  client: {fileID: 0}
   animator: {fileID: 0}
   Perfect: 0
+  firstInteraction: 1
+  repeatStartPosition: 0
+  npcName: 
+  dialogueAsset: {fileID: 0}
 --- !u!95 &1444700044
 Animator:
   serializedVersion: 4
