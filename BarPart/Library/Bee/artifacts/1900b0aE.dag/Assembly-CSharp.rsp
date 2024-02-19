@@ -380,10 +380,15 @@
 "Assets/Scripts/DialogSystem.cs"
 "Assets/Scripts/DishesChoiser.cs"
 "Assets/Scripts/DragObject.cs"
+"Assets/Scripts/FadeOut.cs"
 "Assets/Scripts/GameManager.cs"
 "Assets/Scripts/LiquidTestObject.cs"
+"Assets/Scripts/MainMenuFadeIn.cs"
 "Assets/Scripts/MainMenuScript.cs"
+"Assets/Scripts/MusicControll.cs"
 "Assets/Scripts/PerfectCircleoPosition.cs"
+"Assets/Scripts/ResulMenu.cs"
+"Assets/Scripts/SoundContoller.cs"
 "Assets/Scripts/TableDestroyer.cs"
 -langversion:9.0
 

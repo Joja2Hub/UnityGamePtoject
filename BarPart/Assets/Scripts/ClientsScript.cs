@@ -102,6 +102,7 @@ public class ClientsScript : MonoBehaviour
 
         public void WakeUp()
         {
+            gameManager.CupAudio();
             fireOrb.SetActive(true);
             airOrb.SetActive(true);
             waterOrb.SetActive(true);

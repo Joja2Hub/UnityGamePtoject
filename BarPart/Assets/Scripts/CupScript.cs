@@ -22,6 +22,7 @@ public class CupScript : MonoBehaviour
         clientSript = client.GetComponent<ClientsScript>();
         clientSript.WakeUp();
         gameManager.curCupInit();
+        
     }
 
 

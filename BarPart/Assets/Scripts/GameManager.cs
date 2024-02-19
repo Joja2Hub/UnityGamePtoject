@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor.PackageManager;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
-public class GameManager : MonoBehaviour
+public class GameManager : SoundContoller
 {
     public Animator animator;
     public ClientsScript clientSript;
@@ -85,20 +86,33 @@ public class GameManager : MonoBehaviour
         animator = currentClient.GetComponent<Animator>();
     }
 
+    public void CupAudio()
+    {
+        PlaySound(sounds[16], p1: 1f, p2: 1.05f);
+    }
+
     public void curCupInit(){
         currentCup = GameObject.FindGameObjectWithTag("Cup");
         }
 
     public void ClientCum()
     {
-        clientGone = false;
-        SpawnClient();
-        enjoyStats = 0;
-        patience = 0;
-        discontent = 0;
-        clientSript = clients[currentClientIndex].GetComponent<ClientsScript>();
-        ServeButton.gameObject.SetActive(true);
-        ClienReady();
+        try
+        {
+            PlaySound(sounds[currentClientIndex], p1: 1f, p2: 1f);
+            clientGone = false;
+            SpawnClient();
+            enjoyStats = 0;
+            patience = 0;
+            discontent = 0;
+            clientSript = clients[currentClientIndex].GetComponent<ClientsScript>();
+            ServeButton.gameObject.SetActive(true);
+            ClienReady();
+        }
+        catch
+        {
+            SceneManager.LoadScene(2);
+        }
     }
 
     void ClienReady()
@@ -114,6 +128,7 @@ public class GameManager : MonoBehaviour
         ServeButton.interactable = false;
         ClientGoneAnim();
         Invoke("ClientUpdate", 3f);
+        
     }
 
 
@@ -121,6 +136,12 @@ public class GameManager : MonoBehaviour
     public void ClientGoneAnim()
     {
         animator.SetTrigger("ClientGone");
+        Invoke("GoneAudio", 0.5f);
+    }
+
+    void GoneAudio()
+    {
+        PlaySound(sounds[currentClientIndex + 10], p1: 1f, p2: 1f);
     }
 
     void ClientUpdate()
@@ -133,6 +154,7 @@ public class GameManager : MonoBehaviour
 
     public void Serve()
     {
+        PlaySound(sounds[15]);
         Debug.Log(cirlcDif.ToString());
         GameObject[] luqid = GameObject.FindGameObjectsWithTag("Luqid");
         drinkCount = 0;
@@ -169,12 +191,14 @@ public class GameManager : MonoBehaviour
             {
                 enjoyStats += 0.05f;
                 discontent += 0.1f;
+                PlaySound(sounds[currentClientIndex + 5], p1: 1f, p2: 1f);
             }
         }
         else
         {
             discontent += 0.3f;
-                
+            PlaySound(sounds[currentClientIndex + 5], p1: 1f, p2: 1f);
+
         }
         drinkCount = 0;
     }
