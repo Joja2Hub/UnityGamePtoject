@@ -16,12 +16,18 @@ public class DragObject : MonoBehaviour
     private Quaternion startZ;
     private Vector3 startPos;
     Rigidbody2D rb;
+    GameManager gameManager;
+
+    private bool isWaterSoundPlaying = false;
+    public AudioSource waterSound;
 
     private void Start()
     {
         this.startPos = transform.position;
         startZ = transform.rotation;
         rb = GetComponent<Rigidbody2D>();
+        gameManager = FindObjectOfType<GameManager>();
+        waterSound = GetComponent<AudioSource>();
     }
 
     [SerializeField]
@@ -67,6 +73,8 @@ public class DragObject : MonoBehaviour
         {
             SpawnLuqid();
         }
+        else
+            StopWaterSound();
     }
 
     private Vector3 GetMousePosition()
@@ -84,9 +92,22 @@ public class DragObject : MonoBehaviour
             cooldown += 0.03f;
             Instantiate(Luqid, dropPoint.position, Quaternion.identity);
         }
+
+        if (!isWaterSoundPlaying)
+        {
+            isWaterSoundPlaying = true;
+            
+            waterSound.Play();
+            Invoke("StopWaterSound", waterSound.clip.length);
+        }
+
     }
 
-
+    private void StopWaterSound()
+    {
+        waterSound.Stop();
+        isWaterSoundPlaying = false;
+    }
 
 
 }
